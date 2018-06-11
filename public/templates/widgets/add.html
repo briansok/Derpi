@@ -1,0 +1,52 @@
+{% extends 'core/index.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Widgets</h2>
+  <a class="uk-label uk-label-primary" href="/dashboard">Go Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="uk-grid widget-add widget-overview">
+		<div class="uk-width-1-1@s form-list">
+      <div class="wrapper">
+        <form action="/widgets/add" method="post">
+          {% csrf_token %}
+          <legend class="uk-legend">Add a widget</legend>
+          <div class="form-item widget-list">
+            <label class="uk-form-label" for="widget">Choose a widget below</label>
+            <select class="uk-input" type="text" name="widget" id="widget-choice">
+              <option value="sensor">Sensor</option>
+              <option value="controller">Controller</option>
+              {% if not widget_clock %}
+                <option value="clock">Clock</option>
+              {% endif %}
+              <option value="weather">Weather</option>
+            </select>
+          </div>
+          <div class="form-item sensor-list">
+            <label class="uk-form-label" for="sensor">Sensor</label>
+            <select class="uk-input" type="text" name="sensor" id="sensor">
+            {% for sensor in sensors %}
+              <option value="{{sensor.id}}">{{sensor.title}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <div class="form-item controller-list">
+            <label class="uk-form-label" for="controller">Controller</label>
+            <select class="uk-input" type="text" name="controller" id="controller">
+            {% for controller in controllers %}
+              <option value="{{controller.id}}">{{controller.title}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <input class="uk-button button-grey" type="submit" value="Add" />
+        </form>
+      </div>
+		</div>
+</div>
+{% endblock %}

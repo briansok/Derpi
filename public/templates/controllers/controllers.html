@@ -1,0 +1,37 @@
+{% extends 'core/index.html' %}
+
+{% block metatitle %}
+	 <title>Home</title>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Controllers</h2>
+  <a class="uk-label uk-label-primary" href="/controllers/add">Add controller</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="uk-grid controller-overview">
+	{% for controller in controllers %}
+		<div class="uk-width-1-2@s controller-item">
+      <div class="wrapper">
+        <h4>{{controller.title}}</h4>
+        <div class="controller-info">
+          <label id="{{controller.id}}" class="data-output">{{controller.token}}</label>
+        </div>
+        <form class="delete" action="/controllers/delete" method="post">
+          {% csrf_token %}
+          <input type="hidden" value="{{controller.id}}" name="controller_id">
+          <button type="submit">
+            <i class="fa fa-times" aria-hidden="true"></i>            
+          </button>
+        </form>
+      </div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

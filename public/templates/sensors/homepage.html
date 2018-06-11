@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <html>
+      {% include "core/header.html" %}
+    <body>
+        <div class="homepage-wrapper">
+          <div class="uk-flex uk-flex-center uk-flex-middle">
+            <div class="login-block">
+              {% load static %}
+              <img src="{% static 'images/derpi-logo-backless.png' %}">
+              <h2>Login</h2>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </body>
+  </html>

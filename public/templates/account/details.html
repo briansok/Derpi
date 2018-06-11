@@ -1,0 +1,69 @@
+{% extends 'core/index.html' %}
+
+{% block metatitle %}
+   <title>Account</title>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="profile-preview">
+  <img class="avatar-big" src="https://placehold.it/100x100">
+  <div class="info">
+    <h2>{{ user.get_username }}</h2>
+    <span>{{ user.groups.all.0 }}</span> 
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+  {% if status == "success" %}
+  <script>
+    saveNotification();
+  </script>
+  {% endif %}
+
+  {% if status == "error" %}
+  <script>
+    errorNotification();
+  </script>
+  {% endif %}
+
+  <div class="uk-grid widget-overview">
+      <div class="uk-width-1-1@s form-list">
+        <div class="wrapper">
+          <form action="/account/" method="post">
+            {% csrf_token %}
+            <legend class="uk-legend">Edit account</legend>
+            <div class="form-item">
+              <label class="uk-form-label" for="title">Username</label>
+              <input class="uk-input" value="{{user.get_username}}" type="text" name="username" id="username" />
+            </div>
+            <div class="form-item">
+              <label class="uk-form-label" for="email">Email</label>
+              <input class="uk-input" value="{{user.email}}" type="text" name="email" id="email" />
+            </div>
+            <div class="form-item">
+              <label class="uk-form-label" for="firstname">First name</label>
+              <input class="uk-input" value="{{user.first_name}}" type="text" name="firstname" id="firstname" />
+            </div>
+            <div class="form-item">
+              <label class="uk-form-label" for="lastname">Last name</label>
+              <input class="uk-input" value="{{user.last_name}}" type="text" name="lastname" id="lastname" />
+            </div>
+            <input class="save uk-button" type="submit" value="Save" />
+          </form>
+        </div>
+      </div>
+      <div class="uk-width-1-1@s widget-item">
+        <div class="wrapper">
+          <a class="uk-text-muted" href=""><h4>Een setting</h4></a>
+          <div class="controller-info">
+            <label id="" class="data-output">Dit is data</label>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

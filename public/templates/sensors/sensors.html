@@ -1,0 +1,57 @@
+{% extends 'core/index.html' %}
+
+{% block metatitle %}
+	 <title>Home</title>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Sensors</h2>
+  <a class="uk-label uk-label-primary" href="/sensors/add">Add sensor</a>
+</div>
+<div class="categories">
+    <a class="category-label filter" href="#" data-group="all"><span>All</span></a>
+  {% for category in categories %}
+    <a class="category-label filter" href="#" data-group="{{category.title}}"><span>{{category.title}}</span></a>
+  {% endfor %}
+    <a class="category-label" href="/categories/add" data-group="all"><span>+</span></a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div id="output"></div>
+<div id="testid"></div>
+
+<div class="uk-grid sensor-overview">
+	{% for sensor in sensors %}
+		<div class="uk-width-1-5@s sensor-item {{sensor.category}} all">
+      <div class="wrapper">
+        <a class="uk-text-muted" href="/sensors/details/{{sensor.id}}"><h4>{{sensor.title}}</h4></a>
+        <div class="sensor-info">
+          {% if sensor.sensor_types == "SW" %}
+            <label class="switch uid-{{sensor.id}}">
+              <input type="checkbox" id="{{sensor.id}}" class="switch-check" data-type="{{sensor.sensor_types}}" data-gpio="{{sensor.gpio}}" data-token="{{sensor.controller.token}}" {% if sensor.value == 1 %}checked{% endif %}>
+              <div class="slider round"></div>
+            </label>
+          {% endif %} 
+
+          {% if sensor.sensor_types == "OU" %}
+            <label id="{{sensor.id}}" class="data-output" data-type="{{sensor.sensor_types}}" data-token="{{sensor.controller.token}}">{{sensor.value}}</label>
+          {% endif %} 
+          <form class="delete" action="/sensors/delete" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{sensor.id}}" name="sensor_id">
+            <button type="submit">
+              <i class="fa fa-times" aria-hidden="true"></i>            
+            </button>
+          </form>
+        </div>
+      </div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

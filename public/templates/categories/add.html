@@ -1,0 +1,29 @@
+{% extends 'core/index.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Categories</h2>
+  <a class="uk-label uk-label-primary" href="/sensors">Go Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="uk-grid widget-add widget-overview">
+		<div class="uk-width-1-1@s form-list">
+      <div class="wrapper">
+        <form action="/categories/add" method="post">
+          {% csrf_token %}
+          <legend class="uk-legend">Add a category</legend>
+          <div class="form-item">
+            <label class="uk-form-label" for="title">Title</label>
+            <input class="uk-input" type="text" name="title" id="title" />
+          </div>
+          <input class="uk-button button-grey" type="submit" value="Add" />
+        </form>
+      </div>
+		</div>
+</div>
+{% endblock %}

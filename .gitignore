@@ -1,0 +1,9 @@
+*.pyc
+/.idea
+/*.sqlite3
+/*.sqlite
+*.DS_Store
+dump.rdb
+/venv
+/static
+local_settings.py

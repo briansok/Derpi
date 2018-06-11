@@ -1,0 +1,33 @@
+{% extends 'core/index.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Controller stuff</h2>
+  <a class="uk-label uk-label-primary" href="/controllers">Go Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="uk-grid widget-overview">
+		<div class="uk-width-1-1@s widget-item">
+      <div class="wrapper">
+        <form action="{% url 'add' %}" method="post">
+          {% csrf_token %}
+          <legend class="uk-legend">Add a controller</legend>
+          <div>
+            <label class="uk-form-label" for="title">Title</label>
+            <input class="uk-input" type="text" name="title" id="title" />
+          </div>
+          <div>
+            <label class="uk-form-label" for="token">Token</label>
+            <input class="uk-input" type="text" value="{{token}}" name="token" id="token" />
+          </div>
+          <input class="uk-button button-grey uk-margin-top" type="submit" value="Add" />
+        </form>
+      </div>
+		</div>
+</div>
+{% endblock %}

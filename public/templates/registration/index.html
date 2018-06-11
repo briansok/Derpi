@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{% static 'js/uikit.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/uikit.rtl.min.css' %}">
+    <meta charset="utf-8">
+    {% block metatitle %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+    </header>
+      <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav uk-margin-left">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/sensors">Sensors</a></li>
+            <li><a href="/admin">Admin</a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav uk-margin-right">
+            {% if user.is_authenticated %}
+              <li><a href="/account">Account</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {% else %}
+              <li><a href="/login">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+    <div class="uk-section uk-section-secondary">
+      <div class="uk-container">
+        {% block title %}
+          <h1>Sensors</h1>
+        {% endblock %}
+          <a class="uk-label uk-label-primary" href="/sensors/add">Add sensor</a>
+        {% block content %}
+
+        {% endblock %}
+      </div>
+    </div>
+    {% block messages %}
+
+    {% endblock %}
+  </body>
+</html>

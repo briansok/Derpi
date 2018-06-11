@@ -1,0 +1,75 @@
+{% extends 'core/index.html' %}
+
+{% block metatitle %}
+   <title>Home</title>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Home</h2>
+  <a class="uk-label uk-label-primary" href="/widgets/add">Add widget</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="widget-overview">
+    {% for widget in widgets %}
+      {% if widget.sensors != null %}
+        <div class="sensor-item {{widget.sensors.category}} widget-item">
+          <div class="wrapper">
+            <a class="uk-text-muted" href="/sensors/details/{{widget.sensors.id}}"><h4>{{widget.sensors.title}}</h4></a>
+            <div class="sensor-info">
+              {% if widget.sensors.sensor_types == "SW" %}
+                <label class="switch" id="uid-{{widget.sensors.id}}">
+                  <input type="checkbox" id="{{widget.sensors.id}}" class="switch-check" data-type="{{widget.sensors.sensor_types}}" data-gpio="{{widget.sensors.gpio}}" data-token="{{widget.sensors.controller.token}}" {% if widget.sensors.value == 1 %}checked{% endif %}>
+                  <div class="slider round"></div>
+                </label>
+              {% endif %} 
+
+              {% if widget.sensors.sensor_types == "OU" %}
+                <label id="{{widget.sensors.id}}" class="data-output" data-type="{{widget.sensors.sensor_types}}" data-token="{{widget.sensors.controller.token}}">{{widget.sensors.value}}</label>
+              {% endif %} 
+            </div>
+            {% include 'core/delete.html' %}
+          </div>
+        </div>
+      {% endif %} 
+      {% if widget.controllers != null %}
+        <div class="controller-item widget-item">
+          <div class="wrapper">
+            <a class="uk-text-muted" href="/controllers/details/{{widget.controllers.id}}"><h4>{{widget.controllers.title}}</h4></a>
+            <div class="controller-info">
+              <label id="{{widget.controllers.id}}" class="data-output">{{widget.controllers.token}}</label>
+            </div>
+            {% include 'core/delete.html' %}
+          </div>
+        </div>
+      {% endif %} 
+      {% if widget.widget_type == 'CL' %}
+        <div class="widget-item-clock widget-item">
+          <div class="wrapper">
+            <div class="clock-info">
+              <label id="clock">{{ time }}</label>
+            </div>
+            {% include 'core/delete.html' %}
+          </div>
+        </div>
+      {% endif %} 
+      {% if widget.widget_type == 'WE' %}
+        <div class="widget-item-weather widget-item">
+          <div class="wrapper">
+            <div class="weather-info">
+              <label id="weather">Empty</label>
+            </div>
+          </div>
+        </div>
+      {% endif %} 
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block messages %}
+{% endblock %}

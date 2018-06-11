@@ -1,0 +1,11 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+.primary-menu {
+  position: absolute;
+  height: 100vh;
+  width: 10rem;
+}
+.inner {
+  margin-left: 10rem;
+}

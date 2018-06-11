@@ -1,0 +1,7 @@
+<form class="delete" action="/dashboard/delete" method="post">
+  {% csrf_token %}
+  <input type="hidden" value="{{widget.id}}" name="widget_id">
+  <button type="submit">
+    <i class="fa fa-times" aria-hidden="true"></i>            
+  </button>
+</form>

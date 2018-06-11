@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <html>
+      {% include "core/header.html" %}
+    <body>
+        <div class="homepage-wrapper">
+          <div class="uk-flex uk-flex-center uk-flex-middle">
+            <img src="/static/images/derpi-logo-backless.png">
+            <div class="login-block">
+              <p>Open source home automation</p>
+              <hr>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="uk-button" type="submit">Login</button>
+                <a href="/register" class="register" onclick="return false">Register</a>
+              </form>
+            </div>
+          </div>
+        </div>
+    </body>
+  </html>

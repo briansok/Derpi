@@ -1,0 +1,65 @@
+{% extends 'core/index.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content-top %}
+<div class="dash-heading">
+  <h2>Sensors</h2>
+  <a class="uk-label uk-label-primary" href="/sensors">Go Back</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="uk-grid widget-overview">
+		<div class="uk-width-1-1@s form-list">
+      <div class="wrapper">
+        <form action="/sensors/add" method="post">
+          {% csrf_token %}
+          <legend class="uk-legend">Add a sensor</legend>
+          <div class="form-item">
+            <label class="uk-form-label" for="title">Title</label>
+            <input class="uk-input" type="text" name="title" id="title" />
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="sensor_type">Sensor type</label>
+            <select class="uk-input" type="text" name="sensor_type" id="sensor_type">
+              <option value="SW">On/off switch</option>
+              <option value="OU">Output</option>
+              <option value="SL">Data slider</option>
+            </select>
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="controller">Controller</label>
+            <select class="uk-input" type="text" name="controller" id="controller">
+            {% for controller in controllers %}
+              <option value="{{controller.id}}">{{controller.title}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="category">Category</label>
+            <select class="uk-input" type="text" name="category" id="category">
+            {% for category in categories %}
+              <option value="{{category.id}}">{{category.title}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="value">Value</label>
+            <input class="uk-input" type="number" name="value" id="value" />
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="gpio">GPIO</label>
+            <input class="uk-input" type="number" name="gpio" id="gpio" />
+          </div>
+          <div class="form-item">
+            <label class="uk-form-label" for="description">Description</label>
+            <textarea class="uk-textarea" name="description" id="description"></textarea>
+          </div>
+          <input class="uk-button button-grey" type="submit" value="Add" />
+        </form>
+      </div>
+		</div>
+</div>
+{% endblock %}

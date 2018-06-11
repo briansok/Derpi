@@ -1,0 +1,23 @@
+{% extends 'core/index.html' %}
+
+{% block metatitle %}
+   <title>Notifications</title>
+{% endblock %}
+
+{% block title %}
+  <h1>Notifications</h1>
+{% endblock %}
+
+{% block content %}
+<div class="uk-margin-large-top uk-flex" uk-height-match="target: > div > .uk-card">
+  {% for notification in notifications %}
+      <div class="uk-width-1-3@m">
+        <a class="uk-text-muted" href="/sensors/details/{{sensor.id}}"><h2>{{sensor.title}}</h2></a>
+        <p>{{notification.title}}</p>
+      </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block messages %}
+{% endblock %}

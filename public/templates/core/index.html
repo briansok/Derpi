@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html>
+      {% include "core/header.html" %}
+    <body>
+      <header>
+      </header>
+      <div class="primary-menu">
+        <div class="user-info">
+          <div class="wrapper">
+            <img class="avatar" src="https://placehold.it/100x100">
+            <h2>{{ user.get_username }}</h2>
+          </div>
+        </div>
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+          <li><i class="fa fa-desktop" aria-hidden="true"></i><a href="/dashboard">Home</a></li>
+          {% if user.is_authenticated %}
+            <li><i class="fa fa-wifi" aria-hidden="true"></i><a href="/sensors">Sensors</a></li>
+            <li><i class="fa fa-terminal" aria-hidden="true"></i><a href="/controllers">Controllers</a></li>
+            <li><i class="fa fa-user" aria-hidden="true"></i><a href="/account">Account</a></li>
+            <li><i class="fa fa-lock" aria-hidden="true"></i><a href="/admin">Admin</a></li>
+            <li><i class="fa fa-sign-out" aria-hidden="true"></i><a href="/logout">Logout</a></li>
+          {% else %}
+            <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/login">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="inner">
+        <div class="uk-section section-top">
+          <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+              <ul class="uk-navbar-nav">
+                <li><a href="#"><i class="fa fa-user-o" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+            <div class="uk-navbar-right">
+              <ul class="uk-navbar-nav">
+                <li>
+                  <span class="node-status">Node</span>
+                </li>
+                <li><input type="text" class="search-bar" placeholder="Type here to search"><i class="fa fa-search" aria-hidden="true"></i></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="container">
+            {% block content-top %}
+
+            {% endblock %}
+          </div>
+        </div>
+        <div class="uk-section section-middle">
+          <div class="container-middle">
+            {% block title %}
+              <h1>Sensors</h1>
+              <a class="uk-label uk-label-primary" href="/sensors/add">Add sensor</a>
+            {% endblock %}
+            {% block content %}
+
+            {% endblock %}
+          </div>
+        </div>
+        {% include "core/footer.html" %}
+      </div>
+    </body>
+  </html>

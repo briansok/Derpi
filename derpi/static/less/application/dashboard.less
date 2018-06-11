@@ -1,0 +1,235 @@
+.primary-menu {
+	.user-info {
+		height: 5rem; 
+		.wrapper {
+			.displayflex;
+			.align-items(center);
+			.justify-content(center);
+			height: 100%;
+		}
+
+		.avatar {
+			border-radius: 50%;
+			width: 3rem;
+			height: 3rem;
+		}
+
+		h2 {
+			margin: @spacing/4;
+			color: @menuTextColor;
+			font-size: 15px;
+			line-height: 2rem;
+		}
+	}
+	
+	ul {
+		padding: @spacing/1.5;
+	}
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.footer {
+    .displayflex;
+    li {
+        list-style: none; 
+        font-size: 12px;
+        margin-left: @spacing/2;
+    } 
+}
+
+.section-top {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	padding-left: 0 !important;
+	background-color: @white;
+
+	.uk-navbar {
+		height: 5rem;
+		background-color: @white;
+		border-bottom: 1px solid @borderColor;
+		padding: 0 @spacing/4;
+	}
+
+	.search-bar {
+		border: none;
+		font-size: 14px;
+		outline: none;
+		box-shadow: none;
+	}
+
+	.uk-container {
+		padding-top: @spacing;
+	}
+}
+
+.dash-heading {
+    .displayflex;
+    .justify-content(space-between);
+    margin: @spacing/4;
+
+    .uk-label {
+        height: 100%;
+        margin-top: @spacing/4;
+        background: @orange;
+        text-transform: inherit;
+        &:hover { 
+            color: @hoverColor;
+            text-decoration: none;
+        }
+    }
+
+    h2 {
+        margin-bottom: 0;
+    }
+}
+
+.categories {
+    margin-top: @spacing/4;
+    padding: @spacing/4;
+    
+    .category-label {
+        font-size: 14px;
+        border-radius: 10px; 
+        padding: 4px 8px;
+        background-color: @background;
+        color: @darkGrey;
+        margin-right: @spacing/4;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.section-middle {
+	padding: 0!important;
+	margin: @spacing/2;
+
+    .clock-info {
+        text-align: center; 
+    }
+
+    #clock {
+        font-size: 35px;
+    } 
+
+	.uk-container {
+		padding-top: @spacing;
+	}
+
+	.sensor-overview {
+        margin: -@spacing/4;
+		padding-bottom: @spacing;
+	}
+
+	.controller-overview {
+        margin: -@spacing/4;
+		padding-bottom: @spacing;
+	}
+
+	.widget-overview {
+        margin: -@spacing/4;
+		padding-bottom: @spacing;
+	}
+
+    .sensor-info {
+        .data-output {
+            font-size: @spacing;
+        }
+    }
+
+	.sensor-item {
+		padding: @spacing/4;
+
+        .wrapper {
+            position: relative;
+            text-align: center;
+            background: @white;
+            padding: @spacing/1.5 @spacing/2;
+            height: 6rem;
+        }
+	}
+
+	.controller-item {
+		padding: @spacing/4;
+
+        .wrapper {
+            position: relative;
+            background: @white;
+            padding: @spacing/1.5 @spacing/2;
+        }
+	}
+
+}
+
+.form-list {
+    padding: @spacing/4;
+
+    .wrapper {
+        height: 100%;
+        background: @white;
+        padding: @spacing/1.5 @spacing/2;
+    }
+}
+
+.sensor-list, .controller-list {
+    display: none;
+}
+
+.widget-overview {
+    .displayflex;
+
+	.widget-item {
+		padding: @spacing/4;
+        height: 5rem;
+
+        .wrapper {
+            position: relative;
+            height: 100%;
+            background: @white;
+            padding: @spacing/1.5 @spacing/2;
+        }
+	}
+
+    .sensor-item {
+        width: 25%;
+        height: 5rem;
+    }
+
+    .controller-item {
+        width: 50%;
+    }
+    
+    .widget-item-clock {
+        width: 25%;
+
+        .wrapper {
+            .displayflex;
+            .align-items(center);
+        }
+
+        .clock-info {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .widget-item-weather {
+        width: 25%;
+
+        .wrapper {
+            .displayflex;
+            .align-items(center);
+        }
+
+        .clock-info {
+            text-align: center;
+            width: 100%;
+        }
+    }
+}

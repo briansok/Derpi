@@ -1,0 +1,48 @@
+h2 {
+    color: @black;
+}
+
+h3 {
+    color: @textColor;
+}
+
+.homepage-wrapper {
+    .home-background;
+    height: 100vh;
+
+    .uk-flex-middle {
+        height: 100%; 
+    }
+}   
+
+.login-block {
+    background: @white;
+    border-radius: 15px; 
+    width: 15rem;
+    padding: @spacing/2;
+    margin-left: @spacing;
+
+    form {
+        p {
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            width: 100%;
+            padding-bottom: @spacing/4;
+        }
+
+        input {
+            padding: @spacing/4;
+            border-radius: 5px;
+            border: 1px solid @borderColor;
+            width: 13rem;
+        }
+        
+        .register {
+            padding-left: @spacing/2;
+            color: @grey;
+            font-size: 14px;
+        }
+    }
+}
